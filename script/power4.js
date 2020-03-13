@@ -1,5 +1,4 @@
-var toolbox = require("./toolbox.js");
-
+// var toolbox = require("./toolbox.js");
 
 var power4 = {
     puissance4: [],
@@ -14,21 +13,35 @@ var power4 = {
 
     //affiche un tableau de puissance 4
     displayTab: function () {
-        for (var i = 0; i < this.puissance4.length; i++) {
-            var txt = "";
-            for (var j = 0; j < this.puissance4[i].length; j++) {
-                txt += "| ";
-                if (this.puissance4[i][j] === 0) {
-                    txt += "_";
-                } else if (this.puissance4[i][j] === 1) {
-                    txt += this.playerOneChar;
-                } else if (this.puissance4[i][j] === 2) {
-                    txt += this.playerTwoChar;
-                }
-                txt += " |";
+        const gamePower4 = document.querySelector("#power4");
+        gamePower4.innerHTML = "";
+
+        var content = "<table id='tabPower4'>";
+        for(var i = 0; i < this.nbLine;i++) {
+            content += "<tr>"
+            for(var j = 0; j < this.nbColumn; j++) {
+                content += "<td class='case'>";
+                content += "</td>";
             }
-            console.log(txt);
+            content += "</tr>";
         }
+        content += "</table>";
+        gamePower4.innerHTML = content;
+        // for (var i = 0; i < this.puissance4.length; i++) {
+        //     var txt = "";
+        //     for (var j = 0; j < this.puissance4[i].length; j++) {
+        //         txt += "| ";
+        //         if (this.puissance4[i][j] === 0) {
+        //             txt += "_";
+        //         } else if (this.puissance4[i][j] === 1) {
+        //             txt += this.playerOneChar;
+        //         } else if (this.puissance4[i][j] === 2) {
+        //             txt += this.playerTwoChar;
+        //         }
+        //         txt += " |";
+        //     }
+        //     console.log(txt);
+        // }
     },
 
     playCase: function(players, line, column) {
@@ -130,4 +143,3 @@ var power4 = {
         return false;
     }
 }
-module.exports = power4;

@@ -4,13 +4,12 @@
  * on stock ce module dans une varaible pour pouvoir le
  * réutiliser
  */
-var readline = require("readline-sync");
 
 var toolbox = {
     // fonction permettant a l'utilisateur d'ecrire
-    writeString: function (txt) {
-        return readline.question(txt);
-    },
+    // writeString: function (txt) {
+    //     return readline.question(txt);
+    // },
 
     /**
      * permet d'initialiser un tab en fonction des ligne et des colonnes
@@ -30,4 +29,3 @@ var toolbox = {
         return tab;
     }
 };
-module.exports = toolbox;
