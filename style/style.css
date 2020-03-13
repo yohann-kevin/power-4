@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#pagePower4 {
+    max-width: 1070px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#header {
+    background-color: rgb(37, 37, 88);
+    color: white;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+#header h1 {
+    text-align: center;
+}
+
+#header h2 {
+    margin: 5px;
+}
+
+#power4 {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+#tabPower4 {
+    border-collapse: collapse;
+}
+
+.case {
+    width: 100px;
+    height: 75px;
+    border: 2px solid lightgrey;
+    text-align: center;
+}
