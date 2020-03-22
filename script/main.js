@@ -1,22 +1,35 @@
+const turn = document.getElementById("turn");
+const success = document.getElementById("successPower4");
+var playerTurn = 1;
+var endGame = false;
+
 power4.init();
 power4.displayTab();
+success.style.display = "none";
 
+function playing(column) { 
+    if(!endGame) {
+        var lineEmpty = power4.returnLineCaseEmpty(column);
+        if(lineEmpty !== -1) {
+            power4.playCase(playerTurn, lineEmpty, column);
+            power4.displayTab();
+            if(power4.verifyEndGame(playerTurn)) {
+                manageEndGame();
+            }
 
-/**
- * fonction permettant a un joueur de jouer une case
- * Retourne true si le joueur a gagné 
- * @param {number} players 
- */
-function playing(column) {
-    console.log("plop");
-    // var lineEmpty = -1;
-    // var column = -1;
-    // while (lineEmpty === -1 || column <= 0 || column > 7) {
-    //     console.log("choisir une colonne à un emplacement vide");
-    //     var column = power4.chooseColumn();
-    //     var lineEmpty = power4.returnLineCaseEmpty(column);
-    // }
-    // power4.playCase(players, lineEmpty, column);
-    // power4.displayTab();
-    // return power4.verifyEndGame(players);
+            if(playerTurn === 1) {
+                playerTurn = 2;
+                turn.innerHTML = "Tour du joueur 2";
+            } else {
+                playerTurn = 1;
+                turn.innerHTML = "Tour du joueur 1";
+            }  
+        }  
+    }   
+}
+
+function manageEndGame() {
+    endGame = true;
+    success.style.display = "block";
+    success.innerHTML = "Félicitation vous avez gagné";
 }
