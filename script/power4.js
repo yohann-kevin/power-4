@@ -18,21 +18,28 @@ var power4 = {
 
         var content = "<table id='tabPower4'>";
         for(var i = 0; i < this.nbLine;i++) {
-            content += "<tr>"
+            content += "<tr>";
             for(var j = 0; j < this.nbColumn; j++) {
                 content += "<td class='case'>";
+                if(this.puissance4[i][j] === 0) {
+                    content += "";
+                } else if(this.puissance4[i][j] === 1) {
+                    content += "<img src='./images/J1.png' class='imgPlayers1'>";
+                } else if(this.puissance4[i][j] === 2) {
+                    content += "<img src='./images/J2.png' class='imgPlayers2'>";
+                }
                 content += "</td>";
             }
             content += "</tr>";
         }
         content += "<tr id='blockButton'>";
-            content += "<td><button class='btnPower4' onClick='playing(0)'>Colonne 1</button></td>";
-            content += "<td><button class='btnPower4' onClick='playing(1)'>Colonne 2</button></td>";
-            content += "<td><button class='btnPower4' onClick='playing(2)'>Colonne 3</button></td>";
-            content += "<td><button class='btnPower4' onClick='playing(3)'>Colonne 4</button></td>";
-            content += "<td><button class='btnPower4' onClick='playing(4)'>Colonne 5</button></td>";
-            content += "<td><button class='btnPower4' onClick='playing(5)'>Colonne 6</button></td>";
-            content += "<td><button class='btnPower4' onClick='playing(6)'>Colonne 7</button></td>";
+            content += "<td><button class='btnPower4' onClick='playing(1)'>Colonne 1</button></td>";
+            content += "<td><button class='btnPower4' onClick='playing(2)'>Colonne 2</button></td>";
+            content += "<td><button class='btnPower4' onClick='playing(3)'>Colonne 3</button></td>";
+            content += "<td><button class='btnPower4' onClick='playing(4)'>Colonne 4</button></td>";
+            content += "<td><button class='btnPower4' onClick='playing(5)'>Colonne 5</button></td>";
+            content += "<td><button class='btnPower4' onClick='playing(6)'>Colonne 6</button></td>";
+            content += "<td><button class='btnPower4' onClick='playing(7)'>Colonne 7</button></td>";
         content += "</tr>";
         content += "</table>";
         gamePower4.innerHTML = content;
