@@ -7,9 +7,13 @@
     max-width: 1070px;
     width: 100%;
     margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 #header {
+    width: 100%;
     background-color: rgb(37, 37, 88);
     color: white;
     border-radius: 5px;
@@ -41,7 +45,24 @@
     -o-border-radius: 5px;
 }
 
+#msgSuccess {
+    width: 100%;
+}
+
+#btnRestartPower4 {
+    width: 20%;
+}
+
+#j1, #j2 {
+    width: 20%;
+    text-align: center;
+    padding-top: 225px;
+    font-size: 2rem;
+    font-style: bold;
+}
+
 #power4 {
+    width: 60%;
     display: flex;
     justify-content: center;
     margin-top: 25px;
@@ -83,6 +104,7 @@
 }
 
 .imgPlayers1 {
+    max-width: 100%;
     max-height: 70px;
     background-color: #ff9d00;
     border-radius: 50%;
@@ -94,6 +116,7 @@
 
 
 .imgPlayers2 {
+    max-width: 100%;
     max-height: 70px;
     background-color: #545454;
     border-radius: 50%;
