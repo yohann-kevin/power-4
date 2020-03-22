@@ -31,6 +31,10 @@
     margin: 5px;
 }
 
+#header input {
+    color: white;
+}
+
 #successPower4 {
     width: 100%;
     height: 50px;

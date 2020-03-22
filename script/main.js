@@ -8,10 +8,12 @@ var endGame = false;
 var scoreJ1 = 0;
 var scoreJ2 = 0;
 
+var iaOn = false;
+
 initTab();
 
 // fonction premettant de jouer 
-function playing(column) { 
+function playCase(column) { 
     if(!endGame) {
         var lineEmpty = power4.returnLineCaseEmpty(column);
         if(lineEmpty !== -1) {
@@ -59,5 +61,19 @@ function manageEndGame() {
         scoreJ1++;
     } else {
         scoreJ2++;
+    }
+}
+
+// demarre l'IA
+function startIA() {
+    iaOn = !iaOn;
+    console.log(iaOn);
+}
+
+function playing(column) {
+    playCase(column);
+    if(iaOn) {
+        columnIA = 1;
+        playCase(columnIA);
     }
 }
