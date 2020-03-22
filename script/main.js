@@ -1,12 +1,16 @@
 const turn = document.getElementById("turn");
 const success = document.getElementById("successPower4");
+const messagej1 = document.getElementById("j1");
+const messagej2 = document.getElementById("j2");
 var playerTurn = 1;
 var endGame = false;
 
-power4.init();
-power4.displayTab();
-success.style.display = "none";
+var scoreJ1 = 0;
+var scoreJ2 = 0;
 
+initTab();
+
+// fonction premettant de jouer 
 function playing(column) { 
     if(!endGame) {
         var lineEmpty = power4.returnLineCaseEmpty(column);
@@ -28,8 +32,32 @@ function playing(column) {
     }   
 }
 
+// initialise le tableau
+function initTab() {
+    endGame = false;
+    playerTurn = 1;
+    success.style.display = "none";
+    var contentJ1 = "<img src='./images/J1.png' class='imgPlayers1'><br>";
+    contentJ1 += scoreJ1;
+    messagej1.innerHTML = contentJ1;
+
+    var contentJ2 = "<img src='./images/J2.png' class='imgPlayers2'><br>";
+    contentJ2 += scoreJ2;
+    messagej2.innerHTML = contentJ2;
+
+    power4.init();
+    power4.displayTab();
+}
+
+// gere la fin du jeux
 function manageEndGame() {
     endGame = true;
     success.style.display = "block";
-    success.innerHTML = "Félicitation vous avez gagné";
+    success.innerHTML = "<p id='msgSuccess'>Partie terminé le gagnant est : J" + playerTurn + "</p>";
+    success.innerHTML += "<button type='button' class='btnPower4' onclick='initTab()'>Restart</button> ";
+    if(playerTurn===1) {
+        scoreJ1++;
+    } else {
+        scoreJ2++;
+    }
 }
