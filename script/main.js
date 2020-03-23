@@ -11,6 +11,12 @@ var scoreJ2 = 0;
 var iaOn = false;
 
 initTab();
+playForTest(0);
+playForTest(2);
+playForTest(0);
+playForTest(3);
+playForTest(0);
+playForTest(4);
 
 // fonction premettant de jouer 
 function playCase(column) { 
@@ -73,7 +79,12 @@ function startIA() {
 function playing(column) {
     playCase(column);
     if(iaOn) {
-        columnIA = 1;
+       
+        columnIA = IA.columnChoice();
         playCase(columnIA);
     }
+}
+
+function playForTest(column) {
+    playing(column);
 }
