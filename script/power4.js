@@ -33,20 +33,20 @@ var power4 = {
             content += "</tr>";
         }
         content += "<tr id='blockButton'>";
-            content += "<td><button class='btnPower4' onClick='playing(1)'>Colonne 1</button></td>";
-            content += "<td><button class='btnPower4' onClick='playing(2)'>Colonne 2</button></td>";
-            content += "<td><button class='btnPower4' onClick='playing(3)'>Colonne 3</button></td>";
-            content += "<td><button class='btnPower4' onClick='playing(4)'>Colonne 4</button></td>";
-            content += "<td><button class='btnPower4' onClick='playing(5)'>Colonne 5</button></td>";
-            content += "<td><button class='btnPower4' onClick='playing(6)'>Colonne 6</button></td>";
-            content += "<td><button class='btnPower4' onClick='playing(7)'>Colonne 7</button></td>";
+            content += "<td><button class='btnPower4' onClick='playing(0)'>Colonne 1</button></td>";
+            content += "<td><button class='btnPower4' onClick='playing(1)'>Colonne 2</button></td>";
+            content += "<td><button class='btnPower4' onClick='playing(2)'>Colonne 3</button></td>";
+            content += "<td><button class='btnPower4' onClick='playing(3)'>Colonne 4</button></td>";
+            content += "<td><button class='btnPower4' onClick='playing(4)'>Colonne 5</button></td>";
+            content += "<td><button class='btnPower4' onClick='playing(5)'>Colonne 6</button></td>";
+            content += "<td><button class='btnPower4' onClick='playing(6)'>Colonne 7</button></td>";
         content += "</tr>";
         content += "</table>";
         gamePower4.innerHTML = content;
     },
 
     playCase: function(players, line, column) {
-        this.puissance4[line][column - 1] = players;
+        this.puissance4[line][column] = players;
     },
 
     /**
@@ -67,7 +67,7 @@ var power4 = {
      * @param {number} column 
      */
     verifyCaseEmpty: function (line, column) {
-        return this.puissance4[line][column - 1] === 0;
+        return this.puissance4[line][column] === 0;
     },
 
     /**
