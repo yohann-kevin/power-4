@@ -12,10 +12,14 @@ var iaOn = false;
 
 initTab();
 playForTest(0);
+playForTest(1);
 playForTest(2);
-playForTest(0);
+playForTest(4);
 playForTest(3);
-playForTest(0);
+playForTest(3);
+playForTest(4);
+playForTest(3);
+playForTest(4);
 playForTest(4);
 
 // fonction premettant de jouer 

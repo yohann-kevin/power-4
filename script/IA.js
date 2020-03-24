@@ -76,15 +76,46 @@ var IA = {
                 }
             }
         }
-        if(counter > 3) return true;
+        if( counter > 3 ) return true;
     },
 
-    verifyWinColumn : function() {
-
+    verifyWinColumn : function(line,column,players) {
+        var counter = 1;
+        if( line < 3 ) {
+            if(power4.puissance4[line+1][column] === players) {
+                counter++;
+                if(power4.puissance4[line+2][column] === players) {
+                    counter++;
+                    if(power4.puissance4[line+3][column] === players) {
+                        counter++;
+                    }
+                }
+            }
+        }
+        if( counter > 3) return true;
     },
 
-    verifyWinDiagonal : function() {
-
+    verifyWinDiagonal : function(line,column,players) {
+        var counter = 1;
+        if((line-1 >=0) && (column+1 <= power4.nbColumn) && power4.puissance4[line-1][column+1] === players){
+            counter++;
+            if((line-2 >=0) && (column+2 <= power4.nbColumn) && power4.puissance4[line-2][column+2] === players){
+                counter++;
+                if((line-3 >=0) && (column+3 <= power4.nbColumn) && power4.puissance4[line-3][column+3] === players){
+                    counter++;
+                }
+            }
+        }
+        if((line+1 < power4.nbLine) && (column-1 >= 0) && power4.puissance4[line+1][column-1] === players){
+            counter++;
+            if((line+2 < power4.nbLine) && (column-2 >= 0) && power4.puissance4[line+2][column-2] === players){
+                counter++;
+                if((line+3 < power4.nbLine) && (column-3 >= 0) && power4.puissance4[line+3][column-3] === players){
+                    counter++;
+                }
+            }
+        }
+        if( counter > 3 ) return true;
     }
 
 }
