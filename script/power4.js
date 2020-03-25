@@ -7,6 +7,7 @@ var power4 = {
     playerOneChar: "x",
     playerTwoChar: "o",
 
+    // initialise le jeux
     init: function() {
         this.puissance4 = toolbox.initTab(this.nbLine, this.nbColumn, 0);
     },
@@ -45,6 +46,7 @@ var power4 = {
         gamePower4.innerHTML = content;
     },
 
+    // permet de jouer une case
     playCase: function(players, line, column) {
         this.puissance4[line][column] = players;
     },

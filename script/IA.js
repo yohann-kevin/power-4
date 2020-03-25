@@ -17,6 +17,7 @@ var IA = {
         return tabBestColumn[Math.floor(Math.random() * tabBestColumn.length)];
     },
 
+    // permet de vérifier si une case est vide 
     getTabCaseEmpty : function() {
         var tabColumn = [];
         for( var i = 0; i < power4.nbColumn; i++) {
@@ -25,6 +26,7 @@ var IA = {
         return tabColumn;
     },
 
+    // calcul le poids d'une cellule 
     getCaseWeight : function(line,column) {
         if(line === -1)  return 0;
 
@@ -49,6 +51,7 @@ var IA = {
         // additionner les poids 
     },
 
+    // utilise les différente fonction qui vérifie si l'on a gagner
     verifyWin : function(line,column,players) {
         if(this.verifyWinLine(line,column,players)) return true;
         if(this.verifyWinColumn(line,column,players)) return true;
@@ -79,6 +82,7 @@ var IA = {
         if( counter > 3 ) return true;
     },
 
+    // retourne true si on peut gagner en colonne
     verifyWinColumn : function(line,column,players) {
         var counter = 1;
         if( line < 3 ) {
@@ -95,6 +99,7 @@ var IA = {
         if( counter > 3) return true;
     },
 
+    // retourne true si on peut gagner en diagonal
     verifyWinDiagonal : function(line,column,players) {
         var counter = 1;
         if((line-1 >=0) && (column+1 <= power4.nbColumn) && power4.puissance4[line-1][column+1] === players){

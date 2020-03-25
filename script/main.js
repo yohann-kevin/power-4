@@ -11,6 +11,7 @@ var scoreJ2 = 0;
 var iaOn = false;
 
 initTab();
+// joue des jetons pour tester différent scénarios 
 playForTest(0);
 playForTest(1);
 playForTest(2);
@@ -80,6 +81,7 @@ function startIA() {
     console.log(iaOn);
 }
 
+// permet a l'ia de jouer
 function playing(column) {
     playCase(column);
     if(iaOn) {
@@ -89,6 +91,7 @@ function playing(column) {
     }
 }
 
+// permet de placer des jetons pour tester différents scénarios
 function playForTest(column) {
     playing(column);
 }
