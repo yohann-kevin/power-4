@@ -1,5 +1,3 @@
-// var toolbox = require("./toolbox.js");
-
 var power4 = {
     puissance4: [],
     nbColumn: 7,
@@ -9,7 +7,25 @@ var power4 = {
 
     // initialise le jeux
     init: function() {
-        this.puissance4 = toolbox.initTab(this.nbLine, this.nbColumn, 0);
+        this.puissance4 = this.initTab(this.nbLine, this.nbColumn, 0);
+    },
+
+    /**
+     * permet d'initialiser un tab en fonction des ligne et des colonnes
+     * @param {number} nbLine 
+     * @param {number} nbColumn
+     * @param {*} char 
+     */
+    initTab: function(nbLine, nbColumn, char = '') {
+        var tab = [];
+        for (var i = 0; i < nbLine; i++) {
+            var line = [];
+            for (var j = 0; j < nbColumn; j++) {
+                line.push(char);
+            }
+            tab.push(line);
+        }
+        return tab;
     },
 
     //affiche un tableau de puissance 4
@@ -70,13 +86,6 @@ var power4 = {
      */
     verifyCaseEmpty: function (line, column) {
         return this.puissance4[line][column] === 0;
-    },
-
-    /**
-     * fonction permettant de saisir une colonne 
-     */
-    chooseColumn: function() {
-        return parseInt(toolbox.writeString("Quelle colonne ?"));
     },
 
     /**
