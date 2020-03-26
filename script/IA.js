@@ -1,4 +1,7 @@
 var IA = {
+    /**
+     * choisi une colonne
+     */
     columnChoice() {
         var tabColumn = this.getTabCaseEmpty();
         var bestColumn = 0;
@@ -17,7 +20,9 @@ var IA = {
         return tabBestColumn[Math.floor(Math.random() * tabBestColumn.length)];
     },
 
-    // permet de vérifier si une case est vide 
+    /**
+     * permet de vérifier si une case est vide 
+     */
     getTabCaseEmpty : function() {
         var tabColumn = [];
         for( var i = 0; i < power4.nbColumn; i++) {
@@ -26,7 +31,11 @@ var IA = {
         return tabColumn;
     },
 
-    // calcul le poids d'une cellule 
+    /**
+     * calcul le poids d'une cellule 
+     * @param {number} line 
+     * @param {number} column 
+     */
     getCaseWeight : function(line,column) {
         if(line === -1)  return 0;
 
@@ -34,7 +43,12 @@ var IA = {
         
         if(this.verifyWin(line,column,1)) return 99;
 
-        return this.getDefaultWeight(line,column);
+        var weight = 0;
+        if(this.defenseAndAttack(line,column,1)) weight +=20;// defense
+        if(this.defenseAndAttack(line,column,2)) weight +=20;// attack
+        weight += this.getDefaultWeight(line,column);
+
+        return weight;
 
         // la colonne est pleine le poids a renvoyer sera de 0
         // verifie si on peut gagner
@@ -53,14 +67,24 @@ var IA = {
         // additionner les poids 
     },
 
-    // utilise les différente fonction qui vérifie si l'on a gagner
+    /**
+     * utilise les différente fonction qui vérifie si l'on a gagner
+     * @param {number} line 
+     * @param {number} column 
+     * @param {number} players 
+     */
     verifyWin : function(line,column,players) {
         if(this.verifyWinLine(line,column,players)) return true;
         if(this.verifyWinColumn(line,column,players)) return true;
         if(this.verifyWinDiagonal(line,column,players)) return true;
     },
 
-    // retourne true si on peut gagner en ligne
+    /**
+     * retourne true si on peut gagner en ligne
+     * @param {number} line 
+     * @param {number} column 
+     * @param {number} players 
+     */
     verifyWinLine : function(line,column,players) {
         var counter = 1;
         if(power4.puissance4[line][column + 1] === players) {
@@ -84,7 +108,12 @@ var IA = {
         if( counter > 3 ) return true;
     },
 
-    // retourne true si on peut gagner en colonne
+    /**
+     * retourne true si on peut gagner en colonne
+     * @param {number} line 
+     * @param {number} column 
+     * @param {number} players 
+     */
     verifyWinColumn : function(line,column,players) {
         var counter = 1;
         if( line < 3 ) {
@@ -101,7 +130,12 @@ var IA = {
         if( counter > 3) return true;
     },
 
-    // retourne true si on peut gagner en diagonal vers la droite
+    /**
+     * retourne true si on peut gagner en diagonal vers la droite
+     * @param {number} line 
+     * @param {number} column 
+     * @param {number} players 
+     */
     verifyWinDiagonal : function(line,column,players) {
         var counter = 1;
         if((line-1 >=0) && (column+1 <= power4.nbColumn) && power4.puissance4[line-1][column+1] === players){
@@ -145,6 +179,11 @@ var IA = {
         if( counter > 3 ) return true;
     },
 
+    /**
+     * permet de définir un poid de base pour chaque case
+     * @param {number} line 
+     * @param {number} column 
+     */
     getDefaultWeight : function(line,column) {
         var weightLine = 0;
         var weightColumn = 0;
@@ -179,6 +218,21 @@ var IA = {
             break;
         }
         return weightColumn * weightLine;
+    },
+
+    defenseAndAttack : function(line,column,players) {
+        var counter = 1;
+        if(power4.puissance4[line][column+1] === players) {
+            counter++;
+            if(power4.puissance4[line][column+2] === players && power4.puissance4[line][column+3] === 0) counter++;
+        }
+
+        if(power4.puissance4[line][column-1] === players) {
+            counter++;
+            if(power4.puissance4[line][column-2] === players && power4.puissance4[line][column-3] === 0) counter++;
+        }
+           
+        if(counter > 2) return true;
     },
 
 }
