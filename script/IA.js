@@ -31,6 +31,8 @@ var IA = {
         if(line === -1)  return 0;
 
         if(this.verifyWin(line,column,2)) return 100;
+        
+        if(this.verifyWin(line,column,1)) return 99;
 
         return 1;
 
@@ -99,7 +101,7 @@ var IA = {
         if( counter > 3) return true;
     },
 
-    // retourne true si on peut gagner en diagonal
+    // retourne true si on peut gagner en diagonal vers la droite
     verifyWinDiagonal : function(line,column,players) {
         var counter = 1;
         if((line-1 >=0) && (column+1 <= power4.nbColumn) && power4.puissance4[line-1][column+1] === players){
@@ -116,6 +118,26 @@ var IA = {
             if((line+2 < power4.nbLine) && (column-2 >= 0) && power4.puissance4[line+2][column-2] === players){
                 counter++;
                 if((line+3 < power4.nbLine) && (column-3 >= 0) && power4.puissance4[line+3][column-3] === players){
+                    counter++;
+                }
+            }
+        }
+        if( counter > 3 ) return true;
+        counter = 1;
+        if((line-1 >=0) && (column-1 >= 0) && power4.puissance4[line-1][column-1] === players){
+            counter++;
+            if((line-2 >=0) && (column-2 >= 0) && power4.puissance4[line-2][column-2] === players){
+                counter++;
+                if((line-3 >=0) && (column-3 >= 0) && power4.puissance4[line-3][column-3] === players){
+                    counter++;
+                }
+            }
+        }
+        if((line+1 < power4.nbLine) && (column+1 <= power4.nbColumn) && power4.puissance4[line+1][column+1] === players){
+            counter++;
+            if((line+2 < power4.nbLine) && (column+2 <= power4.nbColumn) && power4.puissance4[line+2][column+2] === players){
+                counter++;
+                if((line+3 < power4.nbLine) && (column+3 <= power4.nbColumn) && power4.puissance4[line+3][column+3] === players){
                     counter++;
                 }
             }
