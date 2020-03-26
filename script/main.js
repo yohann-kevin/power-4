@@ -12,18 +12,11 @@ var iaOn = false;
 
 initTab();
 // joue des jetons pour tester différent scénarios 
-// playForTest(0);
 // playForTest(1);
-// playForTest(1);
-// playForTest(2);
-// playForTest(2);
 // playForTest(3);
 // playForTest(2);
-// playForTest(3);
 // playForTest(4);
-// playForTest(4);
-// playForTest(3);
-// playForTest(6);
+
 
 
 // fonction premettant de jouer 
