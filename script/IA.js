@@ -13,7 +13,7 @@ var IA = {
             }
         }
         console.log(tabColumn);
-        console.log(tabBestColumn);
+        // console.log(tabBestColumn);
         return tabBestColumn[Math.floor(Math.random() * tabBestColumn.length)];
     },
 
@@ -34,7 +34,7 @@ var IA = {
         
         if(this.verifyWin(line,column,1)) return 99;
 
-        return 1;
+        return this.getDefaultWeight(line,column);
 
         // la colonne est pleine le poids a renvoyer sera de 0
         // verifie si on peut gagner
@@ -143,6 +143,42 @@ var IA = {
             }
         }
         if( counter > 3 ) return true;
-    }
+    },
+
+    getDefaultWeight : function(line,column) {
+        var weightLine = 0;
+        var weightColumn = 0;
+        switch(line) {
+            case 0 : weightLine = 1;
+            break;
+            case 1 : weightLine = 2;
+            break;
+            case 2 : weightLine = 3;
+            break;
+            case 3 : weightLine = 4;
+            break;
+            case 4 : weightLine = 3;
+            break;
+            case 5 : weightLine = 2;
+            break;
+        }
+        switch(column) {
+            case 0 : weightColumn = 1;
+            break;
+            case 1 : weightColumn = 2;
+            break;
+            case 2 : weightColumn = 3;
+            break;
+            case 3 : weightColumn = 3;
+            break;
+            case 4 : weightColumn = 3;
+            break;
+            case 5 : weightColumn = 2;
+            break;
+            case 6 : weightColumn = 1;
+            break;
+        }
+        return weightColumn * weightLine;
+    },
 
 }
