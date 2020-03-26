@@ -11,13 +11,6 @@ var scoreJ2 = 0;
 var iaOn = false;
 
 initTab();
-// joue des jetons pour tester différent scénarios 
-// playForTest(1);
-// playForTest(3);
-// playForTest(2);
-// playForTest(4);
-
-
 
 // fonction premettant de jouer 
 function playCase(column) { 
@@ -86,7 +79,7 @@ function playing(column) {
     }
 }
 
-// permet de placer des jetons pour tester différents scénarios
+// permet de placer des jetons pour tester différents scénario
 function playForTest(column) {
     playing(column);
 }

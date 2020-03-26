@@ -40,8 +40,9 @@ var IA = {
         if(line === -1)  return 0;
 
         if(this.verifyWin(line,column,2)) return 100;
-        
         if(this.verifyWin(line,column,1)) return 99;
+
+        if(this.avoidLosingTurn(line,column,2)) return 0;
 
         var weight = 0;
         if(this.defenseAndAttack(line,column,1)) weight +=20;// defense
@@ -54,12 +55,6 @@ var IA = {
         // verifie si on peut gagner
         // si on peut gagner return poid 100
         // verifier si on peut perdre ou gagner (le joueur 1 peut gagne) return poids 99
-        
-        
-        
-        
-        
-        
         // autres cas
         // eviter de faire un coup perdant 
         // defendre ( 2 jetons adverse a coté = le bloquer)
@@ -220,6 +215,12 @@ var IA = {
         return weightColumn * weightLine;
     },
 
+    /**
+     * permet a l'ia de se défendre et d'attaquer
+     * @param {number} line 
+     * @param {number} column 
+     * @param {number} players 
+     */
     defenseAndAttack : function(line,column,players) {
         var counter = 1;
         if(power4.puissance4[line][column+1] === players) {
@@ -234,5 +235,17 @@ var IA = {
            
         if(counter > 2) return true;
     },
+
+    /**
+     * 
+     * @param {number} line 
+     * @param {number} column 
+     * @param {number} players 
+     */
+    avoidLosingTurn : function(line,column,players) {
+        if(line-1 > 0) {
+            if(this.verifyWin(line-1,column,1)) return true;
+        }
+    }
 
 }
