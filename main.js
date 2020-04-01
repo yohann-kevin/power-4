@@ -78,8 +78,3 @@ function playing(column) {
         playCase(columnIA);
     }
 }
-
-// permet de placer des jetons pour tester différents scénario
-function playForTest(column) {
-    playing(column);
-}

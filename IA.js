@@ -126,7 +126,7 @@ var IA = {
     },
 
     /**
-     * retourne true si on peut gagner en diagonal vers la droite
+     * retourne true si on peut gagner en diagonal 
      * @param {number} line 
      * @param {number} column 
      * @param {number} players 
@@ -237,14 +237,14 @@ var IA = {
     },
 
     /**
-     * 
+     * éviter de faire un coup perdant
      * @param {number} line 
      * @param {number} column 
      * @param {number} players 
      */
     avoidLosingTurn : function(line,column,players) {
         if(line-1 > 0) {
-            if(this.verifyWin(line-1,column,1)) return true;
+            if(this.verifyWin(line-1,column,1)) return true;  
         }
     }
 
