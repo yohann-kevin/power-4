@@ -133,6 +133,26 @@ var power4 = {
         }
     },
 
+    
+    // verifyDiagonalEndGame: function (players) {
+    //     for (var i = this.nbLine - 1; i >= 3; i--) {
+    //         for (var j = 0; j < this.nbColumn; j++) {
+    //             if (this.puissance4[i][j] === players &&
+    //                 this.puissance4[i - 1][j + 1] === players &&
+    //                 this.puissance4[i - 2][j + 2] === players &&
+    //                 this.puissance4[i - 3][j + 3] === players
+    //             ) return true;
+    //             if (this.puissance4[i][j] === players &&
+    //                 this.puissance4[i - 1][j - 1] === players &&
+    //                 this.puissance4[i - 2][j - 2] === players &&
+    //                 this.puissance4[i - 3][j - 3] === players
+    //             ) return true;
+    //         }
+    //     }
+    //     return false;
+    // },
+
+
     /**
      * fonction permettant de vérifier si un joueur a gagné sur une diagonale
      * @param {number} players 
@@ -140,18 +160,17 @@ var power4 = {
     verifyDiagonalEndGame: function (players) {
         for (var i = this.nbLine - 1; i >= 3; i--) {
             for (var j = 0; j < this.nbColumn; j++) {
-                if (this.puissance4[i][j] === players &&
-                    this.puissance4[i - 1][j + 1] === players &&
-                    this.puissance4[i - 2][j + 2] === players &&
-                    this.puissance4[i - 3][j + 3] === players
-                ) return true;
-                if (this.puissance4[i][j] === players &&
-                    this.puissance4[i - 1][j - 1] === players &&
-                    this.puissance4[i - 2][j - 2] === players &&
-                    this.puissance4[i - 3][j - 3] === players
-                ) return true;
+                if(this.verifyDiag(i, j, players)) { return true };
+                if(this.verifyDiag(i, j, players, true)) { return true };
             }
         }
         return false;
+    },
+
+    verifyDiag: function (i, j, players, goBack=false) {
+        return(this.puissance4[i][j] === players &&
+               this.puissance4[i - 1][goBack ? j - 1 : j + 1] === players &&
+               this.puissance4[i - 2][goBack ? j - 2 : j + 2] === players &&
+               this.puissance4[i - 3][goBack ? j - 3 : j + 3] === players);
     }
 }
